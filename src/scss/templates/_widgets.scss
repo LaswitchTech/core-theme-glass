@@ -15,8 +15,12 @@
             min-width: 400px;
             max-width: 500px;
             max-height: calc(100dvh - var(--widgets-mobile-top-offset));
-            background-color: var(--bs-gray-200) !important;
-            color: bs.color-contrast(colors.$gray-200) !important;
+            border: solid bs.$border-width transparent;
+            box-shadow: inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px -1px rgba(255, 255, 255, 0.1), 1px 3px 24px -1px rgba(0, 0, 0, 0.15);
+            background-image: linear-gradient(125deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2) 70%);
+            backdrop-filter: blur(5px);
+            background-color: transparent !important;
+            color: bs.$light !important;
             overflow: visible;
 
             > * {
@@ -49,15 +53,22 @@
                 }
             }
 
+            .dropdown-divider {
+                margin-top: 0px;
+                margin-bottom: 0px;
+                padding: var(--bs-spacer-1);
+                border: none;
+                box-shadow: inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px -1px rgba(255, 255, 255, 0.1), 1px 3px 24px -1px rgba(0, 0, 0, 0.15);
+                background-image: linear-gradient(125deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2) 70%);
+                backdrop-filter: blur(5px);
+                background-color: transparent !important;
+            }
+
             > li {
-                background-color: var(--bs-body-bg);
+                border: solid bs.$border-width transparent;
 
-                &:first-of-type {
-                    border-top: var(--bs-border-width) solid var(--bs-border-color);
-                }
-
-                &:last-of-type {
-                    border-bottom: var(--bs-border-width) solid var(--bs-border-color);
+                a,button {
+                    color: bs.$light;
                 }
 
                 &:hover,
@@ -66,9 +77,73 @@
                         z-index: 2;
 
                         > * {
-                            background-color: var(--bs-light);
-                            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
-                            transform: translateX(-4px);
+                            border: solid bs.$border-width transparent;
+                            box-shadow: inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px -1px rgba(255, 255, 255, 0.1), 1px 3px 24px -1px rgba(0, 0, 0, 0.15);
+                            background-image: linear-gradient(125deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2) 70%);
+                            backdrop-filter: blur(5px);
+                            background-color: transparent !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .tasks-menu {
+        &.dropdown {
+            .dropdown-menu {
+                .tasks-list {
+                    background-color: transparent !important;
+
+                    .task-row {
+                        &:hover {
+                            border: solid bs.$border-width transparent;
+                            box-shadow: inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px -1px rgba(255, 255, 255, 0.1), 1px 3px 24px -1px rgba(0, 0, 0, 0.15);
+                            background-image: linear-gradient(125deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2) 70%);
+                            backdrop-filter: blur(5px);
+                            background-color: transparent !important;
+                        }
+                    }
+                }
+                .footer {
+                    a,button {
+                        color: bs.$light !important;
+                        text-decoration: none;
+
+                        &:hover {
+                            color: bs.$gray-400 !important;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .notifications-menu {
+        &.dropdown {
+            .dropdown-menu {
+                .notifications-list {
+                    background-color: transparent !important;
+
+                    .notification-row {
+                        &:hover {
+                            border: solid bs.$border-width transparent;
+                            box-shadow: inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px -1px rgba(255, 255, 255, 0.1), 1px 3px 24px -1px rgba(0, 0, 0, 0.15);
+                            background-image: linear-gradient(125deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2) 70%);
+                            backdrop-filter: blur(5px);
+                            background-color: transparent !important;
+                        }
+                    }
+                }
+                .footer {
+                    a,button {
+                        color: bs.$light !important;
+                        text-decoration: none;
+
+                        &:hover {
+                            color: bs.$gray-400 !important;
+                            text-decoration: underline;
                         }
                     }
                 }
@@ -82,15 +157,13 @@
                 .row {
                     padding: var(--bs-spacer-2);
                     margin: 0;
-                    background-color: var(--bs-body-bg);
                     border-top: var(--bs-border-width) solid var(--bs-border-color);
-                    border-bottom: var(--bs-border-width) solid var(--bs-border-color);
 
                     .col {
-                        padding: 0;
+                        padding: var(--bs-spacer-2);
                         margin: 0;
 
-                        a {
+                        a,button {
                             text-decoration: none;
                             display: flex;
                             flex-direction: column;
@@ -99,14 +172,16 @@
                             border-radius: var(--bs-border-radius);
                             padding: var(--bs-spacer-2);
                             transition: 0.3s ease;
-                            border: var(--bs-border-width) solid var(--bs-body-bg);
+                            border: solid bs.$border-width transparent;
+                            box-shadow: inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px -1px rgba(255, 255, 255, 0.1), 1px 3px 24px -1px rgba(0, 0, 0, 0.15);
+                            background-image: linear-gradient(125deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2) 70%);
+                            backdrop-filter: blur(5px);
+                            background-color: transparent !important;
                             color: var(--bs-body-font-color);
 
                             &:hover,
                             &:focus {
-                                border: var(--bs-border-width) solid var(--bs-border-color);
                                 background-color: var(--bs-tertiary-bg);
-                                box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
                                 transform: translateY(-4px);
                             }
                         }
