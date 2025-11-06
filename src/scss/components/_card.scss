@@ -1,0 +1,23 @@
+// src/scss/components/_card.scss
+@use "sass:map";
+@use "sass:math";
+@use "../colors" as colors;
+@use "bootstrap/scss/bootstrap" as bs;
+
+.card {
+    border: solid bs.$border-width transparent;
+    box-shadow: inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px -1px rgba(255, 255, 255, 0.1), 1px 3px 24px -1px rgba(0, 0, 0, 0.15);
+    background-image: linear-gradient(125deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2) 70%);
+    backdrop-filter: blur(5px);
+    background-color: transparent !important;
+
+    .card-header,
+    .card-title {
+        color: bs.$light;
+    }
+
+    .card-body,
+    .card-text {
+        color: bs.$gray-200;
+    }
+}

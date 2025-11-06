@@ -1,0 +1,102 @@
+// src/scss/components/_feed.scss
+@use "sass:map";
+@use "sass:math";
+@use "../colors" as colors;
+@use "bootstrap/scss/bootstrap" as bs;
+
+$timeline-padding: map.get(bs.$spacers, 2);
+
+.timeline {
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    &::before {
+        border-radius: bs.$border-radius;
+        background-color: bs.$gray-100;
+        bottom: $timeline-padding;
+        content: "";
+        left: ($timeline-padding * 4);
+        margin: 0;
+        position: absolute;
+        top: $timeline-padding;
+        width: 4px;
+    }
+
+    > div {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        min-height: 30px;
+        position: relative;
+
+        &::before, &::after {
+            content: "";
+            display: table;
+        }
+
+        > .timeline-item {
+            margin-left: 60px;
+            margin-right: 0;
+            margin-top: 0;
+            padding: 0;
+            position: relative;
+
+            > * {
+                padding: $timeline-padding * 2;
+
+                &.card {
+                    border-width: 0;
+                    padding: 0;
+                }
+
+                &.tools {
+                    background-color: var(--bs-card-cap-bg);
+                    position: relative;
+                    display: flex;
+                    justify-content: flex-end;
+                    padding: $timeline-padding;
+
+                    > * {
+                        padding-left: $timeline-padding;
+                        padding-right: $timeline-padding;
+                        padding-top: math.div($timeline-padding,2);
+                        padding-bottom: math.div($timeline-padding,2);
+                        border-radius: bs.$border-radius;
+                        font-size: (bs.$btn-font-size * 0.75);
+                        line-height: (bs.$btn-line-height * 0.75);
+                    }
+                }
+            }
+        }
+
+         > i {
+            background-color: bs.$secondary;
+            border-radius: 50%;
+            font-size: 16px;
+            height: 30px;
+            left: 18px;
+            line-height: 30px;
+            position: absolute;
+            text-align: center;
+            top: 0;
+            width: 30px;
+        }
+    }
+
+    > .time-label > span {
+        border-radius: 4px;
+        background-color: transparent;
+        display: inline-block;
+        font-weight: 600;
+        padding: 5px;
+    }
+}
+
+// Dark mode adjustments
+@include bs.color-mode(dark) {
+    .timeline {
+        &::before {
+            background-color: colors.$gray-200-dark;
+        }
+    }
+}

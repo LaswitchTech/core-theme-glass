@@ -1,0 +1,74 @@
+// src/scss/components/_ribbon.scss
+@use "sass:map";
+@use "sass:math";
+@use "bootstrap/scss/bootstrap" as bs;
+
+$ribbon-size: 200px;
+$ribbon-scale-sm: .5;
+$ribbon-scale-lg: 1.5;
+$ribbon-scale-xl: 2;
+
+@mixin ribbon-scale($scale) {
+    width: $ribbon-size * $scale;
+    height: $ribbon-size * $scale;
+
+    .ribbon {
+        // Put all declarations BEFORE the RFS mixin to avoid mixed-decls warnings
+        top: math.div($ribbon-size, 3) * 2 * $scale;
+        right: -(math.div($ribbon-size, 3) * $scale);
+        width: math.sqrt(2) * $ribbon-size * $scale;
+        padding: bs.$spacer * $scale;
+
+        // Last: RFS (nested @media) so no declarations come after
+        @include bs.font-size(bs.$font-size-base * $scale);
+    }
+}
+
+.ribbon-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $ribbon-size;
+    height: $ribbon-size;
+    overflow: hidden;
+    z-index: 10;
+
+    .ribbon {
+        position: absolute;
+
+        // Base geometry first
+        top: math.div($ribbon-size, 3) * 2;
+        right: -(math.div($ribbon-size, 3));
+        width: math.sqrt(2) * $ribbon-size;
+
+        transform: rotate(45deg);
+        transform-origin: top right;
+        text-align: center;
+        text-transform: uppercase;
+        text-shadow: 0 -1px 0 rgba(bs.$black, 0.4);
+        line-height: bs.$line-height-base;
+        padding: bs.$spacer;
+        box-shadow: 0 0 bs.$border-width rgba(bs.$black, 0.3);
+        z-index: 11;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            border-left: bs.$border-width solid transparent;
+            border-right: bs.$border-width solid transparent;
+            border-top: bs.$border-width solid bs.$border-color;
+        }
+
+        &::before { left: 0; }
+        &::after  { right: 0; }
+
+        // Last: RFS font-size so the nested @media comes after all declarations
+        @include bs.font-size(bs.$font-size-base);
+    }
+
+    &.ribbon-sm { @include ribbon-scale($ribbon-scale-sm); }
+    &.ribbon-lg { @include ribbon-scale($ribbon-scale-lg); }
+    &.ribbon-xl { @include ribbon-scale($ribbon-scale-xl); }
+}

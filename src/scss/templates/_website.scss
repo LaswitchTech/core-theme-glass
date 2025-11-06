@@ -1,0 +1,191 @@
+// src/scss/templates/_website.scss
+@use "sass:map";
+@use "sass:math";
+@use "../colors" as colors;
+@use "bootstrap/scss/bootstrap" as bs;
+
+[data-bs-template="website"] {
+    .app {
+        background-image: linear-gradient(45deg, #{bs.$teal}, #{bs.$green});
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+
+        * {
+            transition: all 0.3s ease;
+        }
+
+        .app-main {
+            .content {
+                p:not(.card-text) {
+                    color: #{bs.$gray-400};
+                }
+
+                .app-header {
+                    position: sticky;
+                    top: 0;
+                    z-index: 1020;
+                    box-shadow: bs.$box-shadow;
+
+                    nav.navbar{
+                        padding: map.get(bs.$spacers, 2) map.get(bs.$spacers, 5);
+                        background-color: #{bs.$dark};
+                        color: #{bs.color-contrast(bs.$dark)};
+
+                        a,button {
+                            padding: map.get(bs.$spacers, 2) map.get(bs.$spacers, 3);
+
+                            &:not(.btn) {
+                                color: #{bs.$light};
+                            }
+
+                            &.active {
+                                border-radius: bs.$border-radius-pill;
+                                background-color: #{bs.$light};
+                                color: #{bs.color-contrast(bs.$light)};
+                            }
+                        }
+
+                        ul.nav {
+                            margin-left: auto;
+                            margin-top: map.get(bs.$spacers, 2);
+                            margin-bottom: map.get(bs.$spacers, 2);
+                        }
+                    }
+
+                    header {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        align-items: center;
+                        padding-left: map.get(bs.$spacers, 5);
+                        padding-right: map.get(bs.$spacers, 5);
+                        padding-top: map.get(bs.$spacers, 4);
+                        padding-bottom: map.get(bs.$spacers, 4);
+                        box-shadow: inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px -1px rgba(255, 255, 255, 0.1), 1px 3px 24px -1px rgba(0, 0, 0, 0.15);
+                        background-image: linear-gradient(125deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2) 70%);
+                        backdrop-filter: blur(5px);
+                        background-color: transparent !important;
+
+                        > a {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-bottom: 0;
+                            margin-right: auto;
+                            color: #{bs.$light};
+                            text-decoration: none;
+                            user-select: none;
+
+                            img {
+                                max-height: 64px;
+                                max-width: 72px;
+                                margin-right: map.get(bs.$spacers, 2);
+                            }
+
+                            h1 {
+                                font-size: map.get(bs.$font-sizes, 1);
+                                font-weight: lighter;
+                                margin: 0;
+                            }
+                        }
+
+                        > ul.nav {
+                            .nav-link {
+                                color: #{bs.$light};
+                                padding: map.get(bs.$spacers, 2) map.get(bs.$spacers, 3);
+
+                                &.active {
+                                    border-radius: bs.$border-radius-pill;
+                                    background-color: #{bs.$primary};
+                                    color: #{bs.color-contrast(bs.$primary)};
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .app-footer {
+                    padding: map.get(bs.$spacers, 5);
+                    box-shadow: bs.$box-shadow;
+                    background-color: #{bs.$dark};
+                    color: #{bs.color-contrast(bs.$dark)};
+                    border-top: solid bs.$border-width #{bs.$secondary};
+
+                    a:not(.dropdown-item) {
+                        color: #{bs.$gray-400};
+                        text-decoration: none;
+
+                        &:hover {
+                            color: #{bs.$white};
+                            text-decoration: underline;
+                        }
+                    }
+
+                    > div {
+                        &.row {
+                            row-gap: map.get(bs.$spacers, 4);
+
+                            > div {
+                                h5 {
+                                    margin-bottom: map.get(bs.$spacers, 3);
+                                    font-weight: light;
+                                }
+
+                                ul.nav {
+                                    flex-direction: column;
+
+                                    .nav-item {
+                                        .nav-link {
+                                            padding: map.get(bs.$spacers, 1) 0;
+                                            color: #{bs.$gray-400};
+
+                                            &:hover {
+                                                text-decoration: underline;
+                                                color: #{bs.$white};
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &:not(.row) {
+                            margin-top: map.get(bs.$spacers, 5);
+
+                            .dropdown {
+                                > button {
+                                    color: #{bs.$gray-400};
+                                    text-decoration: none;
+
+                                    &:hover {
+                                        color: #{bs.$white};
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    [data-bs-template="website"] {
+        .app {
+            .app-main {
+                .content {
+                    .app-header {
+                        header {
+                            > a {
+                                margin-right: 0;
+                                margin-bottom: map.get(bs.$spacers, 3);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

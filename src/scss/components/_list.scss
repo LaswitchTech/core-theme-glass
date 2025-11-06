@@ -1,0 +1,28 @@
+// src/scss/components/_list.scss
+@use "sass:map";
+@use "sass:math";
+@use "../colors" as colors;
+@use "bootstrap/scss/bootstrap" as bs;
+
+.list-group {
+    .list-group-item {
+        // border: solid bs.$border-width transparent;
+        border: none;
+        box-shadow: inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px -1px rgba(255, 255, 255, 0.1), 1px 3px 24px -1px rgba(0, 0, 0, 0.15);
+        background-image: linear-gradient(125deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2) 70%);
+        backdrop-filter: blur(5px);
+        background-color: transparent !important;
+        color: bs.$white;
+
+        &.list-group-item-action {
+            transition: 0.3s ease;
+
+            &:hover,
+            &:focus {
+                box-shadow: 0 0 0 var(--bs-spacer-1) rgba(255, 255, 255, 0.25);
+                background-color: rgba(255, 255, 255, 0.2);
+                color: bs.$gray-300;
+            }
+        }
+    }
+}

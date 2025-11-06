@@ -1,0 +1,16 @@
+// src/scss/components/_bob.scss
+@use "sass:map";
+@use "sass:math";
+@use "../colors" as colors;
+@use "bootstrap/scss/bootstrap" as bs;
+
+.bob { animation: bob 2.2s ease-in-out infinite; }
+.bubble { animation: wobble 4s ease-in-out infinite alternate; }
+.floaty { animation: floaty 4s ease-in-out infinite alternate; }
+.blink { animation: blink 1.4s ease-in-out infinite; }
+.tilt { animation: tilt 2.8s ease-in-out infinite; }
+@keyframes bob { 0%, 100%{ transform: translateY(160)} 50%{ transform: translateY(-8px)} }
+@keyframes wobble { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
+@keyframes floaty { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-4px) rotate(-2deg); } }
+@keyframes blink { 0%,100%{ opacity: .25 } 50%{ opacity: 1 } }
+@keyframes tilt { 0%,100% { transform: rotate(0deg); } 50% { transform: rotate(-5deg); } }

@@ -1,0 +1,30 @@
+// src/scss/utilities/_opacity.scss
+@use "sass:map";
+@use "sass:math";
+@use "bootstrap/scss/bootstrap" as bs;
+
+// Opacity
+
+$opacity-count: 0;
+@while $opacity-count < 10 {
+  $index: 10 * $opacity-count;
+  $value: calc($opacity-count / 10);
+
+  .opacity-#{$index} {
+    opacity: $value;
+  }
+
+  $opacity-count: $opacity-count + 1;
+}
+
+$opacity-count: 0;
+@while $opacity-count < 4 {
+  $index: 25 * $opacity-count;
+  $value: calc($index / 100);
+
+  .opacity-#{$index} {
+    opacity: $value;
+  }
+
+  $opacity-count: $opacity-count + 1;
+}

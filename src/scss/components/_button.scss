@@ -1,0 +1,46 @@
+// src/scss/components/_button.scss
+@use "sass:map";
+@use "sass:math";
+@use "../colors" as colors;
+@use "bootstrap/scss/bootstrap" as bs;
+
+// Background Colors
+@each $name, $color in bs.$theme-colors {
+    .btn-#{$name} {
+        --bs-btn-bg: #{$color};
+        --bs-btn-border-color: #{$color};
+        --bs-btn-color: #{bs.color-contrast($color)};
+    }
+    .btn-outline-#{$name} {
+        --bs-btn-border-color: #{$color};
+        --bs-btn-color: #{$color};
+
+        &:hover,
+        &:focus {
+            --bs-btn-bg: #{$color};
+            --bs-btn-color: #{bs.color-contrast($color)};
+        }
+    }
+}
+
+// Dark mode adjustments
+@include bs.color-mode(dark) {
+    // Background Colors
+    @each $name, $color in colors.$theme-colors-dark {
+        .btn-#{$name} {
+            --bs-btn-bg: #{$color};
+            --bs-btn-border-color: #{$color};
+            --bs-btn-color: #{bs.color-contrast($color)};
+        }
+        .btn-outline-#{$name} {
+            --bs-btn-border-color: #{$color};
+            --bs-btn-color: #{$color};
+
+            &:hover,
+            &:focus {
+                --bs-btn-bg: #{$color};
+                --bs-btn-color: #{bs.color-contrast($color)};
+            }
+        }
+    }
+}

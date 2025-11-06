@@ -1,0 +1,13 @@
+// src/scss/utilities/_spacing.scss
+@use "sass:map";
+@use "sass:math";
+@use "bootstrap/scss/bootstrap" as bs;
+
+// Emit CSS custom props for spacing
+:root {
+    --bs-spacer: #{bs.$spacer};
+
+    @each $key, $val in bs.$spacers {
+        --bs-spacer-#{$key}: #{$val};
+    }
+}

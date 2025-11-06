@@ -1,0 +1,143 @@
+/* src/scss/forms/_ide.scss */
+@use "sass:map";
+@use "sass:math";
+@use "bootstrap/scss/bootstrap" as bs;
+
+$padding: map.get(bs.$spacers, 2);
+
+.ide {
+    @include bs.border-radius(bs.$border-radius);
+    // Positioning
+    display: flex;
+    overflow: auto;
+    position: relative;
+    // Sizing
+    padding: 0!important;
+    width: 100%;
+    height: 100%;
+
+    * {
+        // Text & Colors
+        font-family: monospace;
+        font-size: bs.$font-size-base;
+        line-height: calc(bs.$font-size-base + ($padding / 2));
+        white-space: pre;
+        // Sizing
+        padding: $padding;
+        border: none;
+    }
+
+    .copy {
+        position: absolute;
+        top: .5rem;
+        right: .5rem;
+        z-index: 2;
+        opacity: .6;
+        transition: opacity .15s ease-in-out;
+    }
+
+    &:hover .copy {
+        opacity: 1;
+    }
+
+    div.lines {
+        // Text & Colors
+        background-color: bs.$light;
+        color: bs.$dark;
+        text-align: right;
+        // Sizing
+        width: 50px;
+        padding-left: 0;
+        padding-right: 0;
+        // Positioning
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        // Extra
+        user-select: none;
+
+        > div {
+            // Sizing
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: $padding;
+            padding-right: $padding;
+            transition: background-color .1s;
+
+            // Static highlight (data-bs-highlight)
+            &.highlight {
+                background-color: bs.$warning;
+                color: bs.color-contrast(bs.$warning);
+            }
+
+            // Active state
+            &.active {
+                background-color: bs.$primary;
+                color: bs.color-contrast(bs.$primary);
+            }
+
+            // User text selection state
+            &.selected {
+                background-color: bs.$info !important;
+                color: bs.color-contrast(bs.$info) !important;
+            }
+        }
+    }
+
+    textarea {
+        // Text & Colors
+        background-color: bs.$dark;
+        color: bs.$light;
+        text-align: left;
+        // Sizing
+        flex-grow: 1;
+        // Positioning
+        z-index: 0;
+        // Extra
+        overflow-wrap: normal;
+        overflow-y: hidden;
+        overflow-x: auto;
+        resize: none;
+        // Tab Sizing
+        tab-size: 4;
+        -moz-tab-size: 4;
+    }
+
+    &.form-control:focus-within {
+        border-color: map.get(bs.$theme-colors, "primary");
+        outline: 0;
+        box-shadow: 0 0 0 .25rem rgba(map.get(bs.$theme-colors, "primary"), .25);
+    }
+}
+
+// Dark mode adjustments
+@include bs.color-mode(dark) {
+    .ide {
+        div.lines {
+            background-color: bs.$gray-800;
+            color: bs.$light;
+
+            > div {
+                background-color: transparent;
+                color: bs.$light;
+
+                // Static highlight (data-bs-highlight)
+                &.highlight {
+                    background-color: bs.$warning;
+                    color: bs.color-contrast(bs.$warning);
+                }
+
+                // Active state
+                &.active {
+                    background-color: bs.$primary;
+                    color: bs.color-contrast(bs.$primary);
+                }
+            }
+        }
+
+        textarea.ide-input {
+            background-color: bs.$dark;
+            color: bs.$light;
+        }
+    }
+}

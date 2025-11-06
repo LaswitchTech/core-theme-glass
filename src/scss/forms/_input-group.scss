@@ -1,0 +1,46 @@
+/* src/scss/forms/_input-group.scss */
+@use "sass:math";
+@use "bootstrap/scss/bootstrap" as bs;
+
+/* Make .input-group behave like a grid column by default */
+.row {
+  > .input-group.col,
+  > .input-group[class*="col-"] {
+    /* override the base .input-group { width: 100% } */
+    width: auto;
+  }
+}
+
+/* Base (xs) row-cols without infix */
+@for $n from 1 through bs.$grid-row-columns {
+  .row.row-cols-#{$n} > .input-group.col {
+    width: math.percentage(math.div(1, $n));
+  }
+}
+
+/* Respect fixed-span column widths (.col[-{bp}]-1..12) and auto */
+@each $bp, $min in bs.$grid-breakpoints {
+  $infix: bs.breakpoint-infix($bp, bs.$grid-breakpoints);
+
+  @include bs.media-breakpoint-up($bp) {
+    /* .col and .col-auto at this breakpoint */
+    .row > .input-group.col#{$infix},
+    .row > .input-group.col#{$infix}-auto {
+      width: auto;
+    }
+
+    /* .col-1..12 widths */
+    @for $i from 1 through bs.$grid-columns {
+      .row > .input-group.col#{$infix}-#{$i} {
+        width: math.percentage(math.div($i, bs.$grid-columns));
+      }
+    }
+
+    /* Recreate row-cols for .input-group at this breakpoint (wins over width:100%) */
+    @for $n from 1 through bs.$grid-row-columns {
+      .row.row-cols#{$infix}-#{$n} > .input-group.col {
+        width: math.percentage(math.div(1, $n));
+      }
+    }
+  }
+}

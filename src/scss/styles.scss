@@ -1,0 +1,82 @@
+// src/scss/styles.scss
+
+// Import Sass modules
+@use "sass:map";
+@use "sass:math";
+
+// Import colors
+@use "colors" as colors;
+
+// Import variables
+@use "variables" as vars;
+
+// Import Bootstrap
+@use "bootstrap/scss/bootstrap" as * with (
+
+    // Colors
+    $black: colors.$black,
+    $white: colors.$white,
+    $gray-100: colors.$gray-100,
+    $gray-200: colors.$gray-200,
+    $gray-300: colors.$gray-300,
+    $gray-400: colors.$gray-400,
+    $gray-500: colors.$gray-500,
+    $gray-600: colors.$gray-600,
+    $gray-700: colors.$gray-700,
+    $gray-800: colors.$gray-800,
+    $gray-900: colors.$gray-900,
+    $blue: colors.$blue,
+    $indigo: colors.$indigo,
+    $purple: colors.$purple,
+    $pink: colors.$pink,
+    $red: colors.$red,
+    $orange: colors.$orange,
+    $yellow: colors.$yellow,
+    $green: colors.$green,
+    $teal: colors.$teal,
+    $cyan: colors.$cyan,
+    $light: colors.$light,
+    $dark: colors.$dark,
+    $primary: colors.$primary,
+    $secondary: colors.$secondary,
+    $success: colors.$success,
+    $info: colors.$info,
+    $warning: colors.$warning,
+    $danger: colors.$danger,
+    $grays: colors.$grays,
+    $theme-colors: colors.$theme-colors,
+
+    // Variables
+    $enable-rounded: vars.$enable-rounded,
+    $enable-dark-mode: vars.$enable-dark-mode,
+    $min-contrast-ratio: vars.$min-contrast-ratio,
+);
+
+// Import Components
+@use "components" as *;
+
+// Import Utilities
+@use "utilities" as *;
+
+// Import Forms
+@use "forms" as *;
+
+// Import Templates
+@use "templates" as *;
+
+// Import Views
+@use "views" as *;
+
+// Dark mode adjustments
+@include color-mode(dark) {
+
+    /* Theme colors (used by buttons, alerts, badges, utilities, etc.) */
+    @each $name, $value in colors.$theme-colors-dark {
+        --bs-#{$name}: #{$value};
+        --bs-#{$name}-rgb: #{to-rgb($value)};
+    }
+
+    /* Body background and text color */
+    --bs-body-bg: #{colors.$body-bg-dark};
+    --bs-body-color: #{colors.$body-color-dark};
+}

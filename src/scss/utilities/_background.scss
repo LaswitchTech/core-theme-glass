@@ -1,0 +1,50 @@
+// src/scss/utilities/_background.scss
+@use "sass:map";
+@use "sass:math";
+@use "../colors" as colors;
+@use "bootstrap/scss/bootstrap" as bs;
+
+// Transparent
+.bg-transparent  {
+    background-color: transparent !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+}
+
+// Parallax Background
+.bg-parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+// Glass Background
+.bg-glass {
+  border: none;
+  box-shadow: inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px -1px rgba(255, 255, 255, 0.1), 1px 3px 24px -1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(125deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2) 70%);
+  backdrop-filter: blur(5px);
+  background-color: transparent !important;
+}
+
+// Background Colors
+@each $name, $color in bs.$theme-colors {
+    .bg-#{$name} {
+        background-color: var(--bs-$name) !important;
+    }
+    .text-bg-#{$name} {
+        background-color: var(--bs-$name) !important;
+        color: bs.color-contrast($color) !important;
+    }
+}
+
+// Dark mode adjustments
+@include bs.color-mode(dark) {
+    // Background Colors
+    @each $name, $color in colors.$theme-colors-dark {
+        .text-bg-#{$name} {
+            color: bs.color-contrast($color) !important;
+        }
+    }
+}
