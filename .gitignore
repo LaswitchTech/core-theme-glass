@@ -20,6 +20,10 @@ TOKEN
 *.cfg
 *.log
 
+# Node.js
+/node_modules/
+npm-debug.log
+
 # Exclude Files
 !info.cfg
 !routes.cfg
