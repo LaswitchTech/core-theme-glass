@@ -1,0 +1,54 @@
+// src/scss/utilities/_position.scss
+@use "sass:map";
+@use "sass:math";
+@use "bootstrap/scss/bootstrap" as bs;
+
+// Position
+
+$position-count: 0;
+@while $position-count < 10 {
+  $index: 10 * $position-count;
+  $value: math.percentage(calc($index / 100));
+
+  .top-#{$index} {
+    top: $value;
+  }
+
+  .bottom-#{$index} {
+    bottom: $value;
+  }
+
+  .start-#{$index} {
+    left: $value;
+  }
+
+  .end-#{$index} {
+    right: $value;
+  }
+
+  $position-count: $position-count + 1;
+}
+
+$position-count: 0;
+@while $position-count < 4 {
+  $index: 25 * $position-count;
+  $value: math.percentage(calc($index / 100));
+
+  .top-#{$index} {
+    top: $value;
+  }
+
+  .bottom-#{$index} {
+    bottom: $value;
+  }
+
+  .start-#{$index} {
+    left: $value;
+  }
+
+  .end-#{$index} {
+    right: $value;
+  }
+
+  $position-count: $position-count + 1;
+}

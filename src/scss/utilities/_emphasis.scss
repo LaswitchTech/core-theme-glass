@@ -1,0 +1,25 @@
+// src/scss/utilities/_emphasis.scss
+@use "sass:map";
+@use "sass:math";
+@use "bootstrap/scss/bootstrap" as bs;
+
+.emphasized-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2000 !important;
+    pointer-events: auto !important;
+}
+
+.emphasized {
+    position: relative;
+    z-index: 2100 !important;
+    border-width: calc(bs.$border-width * 3) !important;
+    border-style: bs.$border-style !important;
+    border-color: bs.$primary !important;
+    box-shadow: 0 0 0 (.25rem * 3) rgba(map.get(bs.$theme-colors, "primary"), .25) !important;
+    border-radius: bs.$border-radius !important;
+}

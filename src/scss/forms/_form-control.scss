@@ -1,0 +1,26 @@
+/* src/scss/forms/_form-control.scss */
+@use "sass:map";
+@use "sass:math";
+@use "../colors" as colors;
+@use "bootstrap/scss/bootstrap" as bs;
+
+.form-control {
+    border: solid bs.$border-width rgba(255.255, 255, 255, 0.5);
+    box-shadow: inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px -1px rgba(255, 255, 255, 0.1), 1px 3px 24px -1px rgba(0, 0, 0, 0.15);
+    background-image: linear-gradient(125deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2) 70%);
+    backdrop-filter: blur(5px);
+    background-color: transparent !important;
+    color: #{bs.$gray-200};
+
+    &::placeholder {
+        color: #{bs.$gray-200};
+        opacity: 1;
+    }
+
+    &:focus {
+        background-color: rgba(255, 255, 255, 0.3);
+        border: solid bs.$border-width rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+        color: #{bs.$white};
+    }
+}

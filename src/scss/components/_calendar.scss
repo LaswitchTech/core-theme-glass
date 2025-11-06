@@ -1,0 +1,115 @@
+// src/scss/components/_calendar.scss
+@use "sass:map";
+@use "sass:math";
+@use "../colors" as colors;
+@use "bootstrap/scss/bootstrap" as bs;
+
+// Remove Background
+.fc .fc-scrollgrid-section-sticky > * {
+    background: none;
+}
+
+// Add text-overflow: ellipsis to event titles
+a.fc-event {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// Year View
+.fc-multiMonthYear-view{
+    border-radius: bs.$border-radius;
+}
+
+// Month View
+.fc-dayGridMonth-view .fc-scrollgrid {
+    border-radius: bs.$border-radius;
+}
+.fc-dayGridMonth-view .fc-scrollgrid-section td[role="presentation"] {
+    border-radius: bs.$border-radius;
+    border-top-right-radius: 0;
+}
+.fc-dayGridMonth-view .fc-scrollgrid-section th[role="presentation"] {
+    border-radius: bs.$border-radius;
+    border-bottom-right-radius: 0;
+}
+
+// Week View
+.fc-timeGridWeek-view .fc-scrollgrid {
+    border-radius: bs.$border-radius;
+}
+.fc-timeGridWeek-view .fc-scrollgrid-section:last-child td[role="presentation"] {
+    border-radius: bs.$border-radius;
+    border-top-right-radius: 0;
+}
+.fc-timeGridWeek-view .fc-scrollgrid-section:first-child th[role="presentation"] {
+    border-top-right-radius: bs.$border-radius;
+}
+
+// Day View
+.fc-timeGridDay-view .fc-scrollgrid {
+    border-radius: bs.$border-radius;
+}
+.fc-timeGridDay-view .fc-scrollgrid-section:last-child td[role="presentation"] {
+    border-radius: bs.$border-radius;
+    border-top-right-radius: 0;
+}
+.fc-timeGridDay-view .fc-scrollgrid-section:first-child th[role="presentation"] {
+    border-top-right-radius: bs.$border-radius;
+}
+
+:root {
+    --fc-button-bg-color: #{bs.$primary};
+    --fc-button-border-color: #{bs.$primary};
+    --fc-button-text-color: #{bs.color-contrast(bs.$primary)};
+    --fc-button-hover-bg-color: #{bs.shade-color(bs.$primary,10%)};
+    --fc-button-hover-border-color: #{bs.shade-color(bs.$primary,10%)};
+    --fc-button-hover-text-color: #{bs.color-contrast(bs.shade-color(bs.$primary,10%))};
+    --fc-button-active-bg-color: #{bs.tint-color(bs.$primary,10%)};
+    --fc-button-active-border-color: #{bs.tint-color(bs.$primary,10%)};
+    --fc-button-active-text-color: #{bs.color-contrast(bs.tint-color(bs.$primary,10%))};
+}
+
+// Colors
+@each $name, $color in bs.$theme-colors {
+    .fc-button-#{$name} {
+        --fc-button-bg-color: #{$color};
+        --fc-button-border-color: #{$color};
+        --fc-button-text-color: #{bs.color-contrast($color)};
+        --fc-button-hover-bg-color: #{bs.shade-color($color,10%)};
+        --fc-button-hover-border-color: #{bs.shade-color($color,10%)};
+        --fc-button-hover-text-color: #{bs.color-contrast(bs.shade-color($color,10%))};
+        --fc-button-active-bg-color: #{bs.tint-color($color,10%)};
+        --fc-button-active-border-color: #{bs.tint-color($color,10%)};
+        --fc-button-active-text-color: #{bs.color-contrast(bs.tint-color($color,10%))};
+    }
+}
+
+// Dark mode adjustments
+@include bs.color-mode(dark) {
+    :root {
+        --fc-button-bg-color: #{colors.$primary};
+        --fc-button-border-color: #{colors.$primary};
+        --fc-button-text-color: #{bs.color-contrast(colors.$primary)};
+        --fc-button-hover-bg-color: #{bs.tint-color(bs.$primary,10%)};
+        --fc-button-hover-border-color: #{bs.tint-color(bs.$primary,10%)};
+        --fc-button-hover-text-color: #{bs.color-contrast(bs.tint-color(bs.$primary,10%))};
+        --fc-button-active-bg-color: #{bs.shade-color(colors.$primary,10%)};
+        --fc-button-active-border-color: #{bs.shade-color(colors.$primary,10%)};
+        --fc-button-active-text-color: #{bs.color-contrast(bs.shade-color(colors.$primary,10%))};
+    }
+    // Colors
+    @each $name, $color in colors.$theme-colors-dark {
+        .fc-button-#{$name} {
+            --fc-button-bg-color: #{$color};
+            --fc-button-border-color: #{$color};
+            --fc-button-text-color: #{bs.color-contrast($color)};
+            --fc-button-hover-bg-color: #{bs.tint-color($color,10%)};
+            --fc-button-hover-border-color: #{bs.tint-color($color,10%)};
+            --fc-button-hover-text-color: #{bs.color-contrast(bs.tint-color($color,10%))};
+            --fc-button-active-bg-color: #{bs.shade-color($color,10%)};
+            --fc-button-active-border-color: #{bs.shade-color($color,10%)};
+            --fc-button-active-text-color: #{bs.color-contrast(bs.shade-color($color,10%))};
+        }
+    }
+}

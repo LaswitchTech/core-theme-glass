@@ -1,0 +1,189 @@
+// src/scss/_colors.scss
+@use "sass:map";
+@use "sass:math";
+@use "bootstrap/scss/functions" as function;
+
+// Black & White
+$black: #000 !default;
+$white: #fff !default;
+
+// Grayscale
+$gray-100: function.shade-color($white, 5%) !default;
+$gray-200: function.shade-color($white, 10%) !default;
+$gray-300: function.shade-color($white, 20%) !default;
+$gray-400: function.shade-color($white, 35%) !default;
+$gray-500: function.shade-color($white, 50%) !default;
+$gray-600: function.shade-color($white, 65%) !default;
+$gray-700: function.shade-color($white, 80%) !default;
+$gray-800: function.shade-color($white, 85%) !default;
+$gray-900: function.shade-color($white, 95%) !default;
+
+// Colors
+$blue: #3a8fd9 !default;
+$indigo: #6610f2 !default;
+$purple: #686dc3 !default;
+$pink: #e83283 !default;
+$red: #ee5f5b !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #41d7a7 !default;
+$teal: #528fb3 !default;
+$cyan: #39cbfb !default;
+$gray: $gray-600 !default;
+$gray-dark: $gray-700 !default;
+
+// Theme Colors
+$primary: $teal !default;
+$secondary: $gray !default;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-100 !default;
+$dark: $gray-800 !default;
+
+// Other Colors
+$body-bg: $white !default;
+$body-color: $gray-800 !default;
+$link-color: $blue !default;
+$link-hover-color: function.shade-color($link-color, 10%) !default;
+$border-color: $gray-300 !default;
+
+// Dark Black & White
+$black-dark: $black !default;
+$white-dark: $white !default;
+
+// Dark Grayscale
+$gray-100-dark: function.tint-color($black, 10%) !default;
+$gray-200-dark: function.tint-color($black, 20%) !default;
+$gray-300-dark: function.tint-color($black, 30%) !default;
+$gray-400-dark: function.tint-color($black, 40%) !default;
+$gray-500-dark: function.tint-color($black, 50%) !default;
+$gray-600-dark: function.tint-color($black, 60%) !default;
+$gray-700-dark: function.tint-color($black, 70%) !default;
+$gray-800-dark: function.tint-color($black, 80%) !default;
+$gray-900-dark: function.tint-color($black, 90%) !default;
+
+// Dark Colors
+$blue-dark: function.shade-color($blue, 25%) !default;
+$indigo-dark: function.shade-color($indigo, 25%) !default;
+$purple-dark: function.shade-color($purple, 25%) !default;
+$pink-dark: function.shade-color($pink, 25%) !default;
+$red-dark: function.shade-color($red, 25%) !default;
+$orange-dark: function.shade-color($orange, 25%) !default;
+$yellow-dark: function.shade-color($yellow, 25%) !default;
+$green-dark: function.shade-color($green, 25%) !default;
+$teal-dark: function.shade-color($teal, 25%) !default;
+$cyan-dark: function.shade-color($cyan, 25%) !default;
+$gray-dark: $gray-600-dark !default;
+$gray-dark-dark: $gray-800-dark !default;
+
+// Dark Theme Colors
+$primary-dark: function.shade-color($primary, 25%) !default;
+$secondary-dark: function.shade-color($secondary, 25%) !default;
+$success-dark: function.shade-color($success, 25%) !default;
+$info-dark: function.shade-color($info, 25%) !default;
+$warning-dark: function.shade-color($warning, 25%) !default;
+$danger-dark: function.shade-color($danger, 25%) !default;
+$light-dark: function.tint-color($light, 10%) !default;
+$dark-dark: function.tint-color($dark, 10%) !default;
+
+// Dark Other Colors
+$body-bg-dark: $dark !default;
+$body-color-dark: $white !default;
+// $link-color-dark: $blue-dark !default;
+// $link-hover-color-dark: function.shade-color($link-color-dark, 10%) !default;
+// $border-color-dark: $gray-200-dark !default;
+
+// Theme Colors
+$theme-colors: (
+    "black": $black,
+    "white": $white,
+    "gray-100": $gray-100,
+    "gray-200": $gray-200,
+    "gray-300": $gray-300,
+    "gray-400": $gray-400,
+    "gray-500": $gray-500,
+    "gray-600": $gray-600,
+    "gray-700": $gray-700,
+    "gray-800": $gray-800,
+    "gray-900": $gray-900,
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light,
+    "gray": $gray,
+    "dark": $dark,
+    "blue": $blue,
+    "indigo": $indigo,
+    "purple": $purple,
+    "pink": $pink,
+    "red": $red,
+    "orange": $orange,
+    "yellow": $yellow,
+    "green": $green,
+    "teal": $teal,
+    "cyan": $cyan
+);
+
+// Dark Theme Colors
+$theme-colors-dark: (
+    "black": $black-dark,
+    "white": $white-dark,
+    "gray-100": $gray-100-dark,
+    "gray-200": $gray-200-dark,
+    "gray-300": $gray-300-dark,
+    "gray-400": $gray-400-dark,
+    "gray-500": $gray-500-dark,
+    "gray-600": $gray-600-dark,
+    "gray-700": $gray-700-dark,
+    "gray-800": $gray-800-dark,
+    "gray-900": $gray-900-dark,
+    "primary": $primary-dark,
+    "secondary": $secondary-dark,
+    "success": $success-dark,
+    "info": $info-dark,
+    "warning": $warning-dark,
+    "danger": $danger-dark,
+    "light": $light-dark,
+    "dark": $dark-dark,
+    "blue": $blue-dark,
+    "indigo": $indigo-dark,
+    "purple": $purple-dark,
+    "pink": $pink-dark,
+    "red": $red-dark,
+    "orange": $orange-dark,
+    "yellow": $yellow-dark,
+    "green": $green-dark,
+    "teal": $teal-dark,
+    "cyan": $cyan-dark
+);
+
+// Grayscale map
+$grays: (
+    "100": $gray-100,
+    "200": $gray-200,
+    "300": $gray-300,
+    "400": $gray-400,
+    "500": $gray-500,
+    "600": $gray-600,
+    "700": $gray-700,
+    "800": $gray-800,
+    "900": $gray-900
+);
+
+// Dark Grayscale map
+$grays-dark: (
+    "100": $gray-100-dark,
+    "200": $gray-200-dark,
+    "300": $gray-300-dark,
+    "400": $gray-400-dark,
+    "500": $gray-500-dark,
+    "600": $gray-600-dark,
+    "700": $gray-700-dark,
+    "800": $gray-800-dark,
+    "900": $gray-900-dark
+);

@@ -1,0 +1,38 @@
+// src/scss/components/_sidebar.scss
+@use "sass:map";
+@use "sass:math";
+@use "../colors" as colors;
+@use "bootstrap/scss/bootstrap" as bs;
+
+[data-bs-template="panel"] {
+    .sidebar {
+        background-color: bs.$dark;
+        color: bs.color-contrast(bs.$dark);
+
+        .sidebar-brand {
+            h1, h2, h3, h4, h5, h6 {
+                font-weight: bs.$font-weight-lighter;
+            }
+        }
+
+        a,
+        button {
+            color: bs.color-contrast(bs.$dark);
+        }
+    }
+}
+
+// Dark mode adjustments
+@include bs.color-mode(dark) {
+    &[data-bs-template="panel"] {
+        .sidebar {
+            background-color: bs.$gray-700;
+            color: bs.color-contrast(bs.$gray-700);
+
+            a,
+            button {
+                color: bs.color-contrast(bs.$gray-700);
+            }
+        }
+    }
+}

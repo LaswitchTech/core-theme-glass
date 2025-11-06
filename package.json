@@ -1,0 +1,37 @@
+{
+    "name": "default",
+    "version": "1.0.0",
+    "description": "<p align=\"center\"><img src=\"picture.png\" /></p>",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "prebuild:css": "node scripts/build-index.js",
+        "build:css": "sass --quiet-deps --load-path=node_modules src/scss/styles.scss styles.css --no-source-map --style=compressed",
+        "watch:css": "sass --quiet-deps --load-path=node_modules src/scss/styles.scss styles.css --watch --embed-source-map",
+        "build:js": "esbuild src/js/library.js --bundle --format=iife --minify --outfile=library.js",
+        "watch:js": "esbuild src/js/library.js --bundle --format=iife --outfile=library.js --watch",
+        "build": "npm run build:css && npm run build:js",
+        "dev": "concurrently \"npm run watch:css\" \"npm run watch:js\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/LaswitchTech/core-theme-default.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/LaswitchTech/core-theme-default/issues"
+    },
+    "homepage": "https://github.com/LaswitchTech/core-theme-default#readme",
+    "dependencies": {
+        "@popperjs/core": "^2.11.8",
+        "bootstrap": "^5.3.7"
+    },
+    "devDependencies": {
+        "concurrently": "^9.2.0",
+        "esbuild": "^0.25.8",
+        "sass": "^1.89.2",
+        "vite": "^7.0.5"
+    }
+}

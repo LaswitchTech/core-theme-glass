@@ -1,0 +1,123 @@
+// src/scss/components/_navbar.scss
+@use "sass:map";
+@use "sass:math";
+@use "../colors" as colors;
+@use "bootstrap/scss/bootstrap" as bs;
+
+$nav-padding: map.get(bs.$spacers, 2);
+$nav-padding-lg: map.get(bs.$spacers, 3);
+
+.navbar {
+    z-index: 1000;
+}
+
+[data-bs-template="panel"],
+[data-bs-template="fullscreen"] {
+    .app {
+        .app-main {
+            > .navbar {
+                background-color: var(--bs-primary);
+                color: bs.color-contrast(bs.$primary);
+                z-index: 1025;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+                .brand {
+                    h1, h2, h3, h4, h5, h6 {
+                        font-weight: bs.$font-weight-lighter;
+                    }
+                }
+
+                a:not(.dropdown-item,.accordion-button),
+                button:not(.dropdown-item,.accordion-button) {
+                    color: bs.color-contrast(bs.$primary);
+                }
+
+                .dropdown,
+                .app-drawer,
+                .profile-drawer {
+                    .dropdown-menu {
+                        min-width: 350px;
+                        max-width: 500px;
+
+                        > * {
+                            max-height:500px
+                        }
+
+                        .dropdown-item {
+                            &.active {
+                                background-color: var(--bs-primary);
+                                color: bs.color-contrast(bs.$primary);
+                            }
+                        }
+                    }
+                }
+            }
+
+            main {
+                > .navbar {
+                    background-color: var(--bs-gray-200);
+                    color: bs.color-contrast(bs.$gray-200);
+                    padding-top: $nav-padding;
+                    padding-right: $nav-padding-lg;
+                    padding-bottom: $nav-padding;
+                    padding-left: $nav-padding-lg;
+
+                    h1, h2, h3, h4, h5, h6 {
+                        font-weight: bs.$font-weight-light;
+                    }
+
+                    .breadcrumb {
+                        margin-bottom: 0;
+                    }
+
+                    a:not(.dropdown-item,.accordion-button),
+                    button:not(.dropdown-item,.accordion-button) {
+                        color: bs.color-contrast(bs.$gray-200);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Dark mode adjustments
+@include bs.color-mode(dark) {
+    &[data-bs-template="panel"],
+    &[data-bs-template="fullscreen"] {
+        .app {
+            .app-main {
+                > .navbar {
+                    color: bs.color-contrast(colors.$primary-dark);
+
+                    a:not(.dropdown-item,.accordion-button),
+                    button:not(.dropdown-item,.accordion-button) {
+                        color: bs.color-contrast(colors.$primary-dark);
+                    }
+
+                    .dropdown,
+                    .app-drawer,
+                    .profile-drawer {
+                        .dropdown-menu {
+                            .dropdown-item {
+                                &.active {
+                                    color: bs.color-contrast(colors.$primary-dark);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                main {
+                    > .navbar {
+                        color: bs.color-contrast(colors.$gray-200-dark);
+
+                        a:not(.dropdown-item,.accordion-button),
+                        button:not(.dropdown-item,.accordion-button) {
+                            color: bs.color-contrast(colors.$gray-200-dark);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

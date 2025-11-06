@@ -1,0 +1,79 @@
+// src/scss/components/_dropdown.scss
+@use "sass:map";
+@use "sass:math";
+@use "../colors" as colors;
+@use "bootstrap/scss/bootstrap" as bs;
+
+.dropdown {
+    .dropdown-menu {
+        border: solid bs.$border-width transparent;
+        box-shadow: inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px -1px rgba(255, 255, 255, 0.1), 1px 3px 24px -1px rgba(0, 0, 0, 0.15);
+        background-image: linear-gradient(125deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2) 70%);
+        backdrop-filter: blur(5px);
+        background-color: transparent !important;
+        color: bs.color-contrast(colors.$gray-200) !important;
+        overflow: visible;
+
+        > * {
+            position: relative;
+            transition: 0.3s ease;
+
+            .dropdown-divider {
+                margin-top: 0px;
+                margin-bottom: 0px;
+                padding: var(--bs-spacer-1);
+                border-top: var(--bs-border-width) solid var(--bs-border-color);
+                border-bottom: var(--bs-border-width) solid var(--bs-border-color);
+            }
+
+            > * {
+                transition: 0.3s ease;
+            }
+
+            &:has(.border) {
+                .border {
+                    transition: 0.3s ease;
+                }
+                &:hover,
+                &:focus {
+                    .border {
+                        --bs-border-color: var(--bs-primary);
+                        box-shadow: 0 0 0 var(--bs-spacer-1) rgba(var(--bs-primary-rgb),.25);
+                    }
+                }
+            }
+        }
+
+        > li {
+            border: solid bs.$border-width transparent;
+
+            a {
+                color: bs.$light;
+            }
+
+            &:hover,
+            &:focus {
+                &:not(*:has(.dropdown-divider)){
+                    z-index: 2;
+
+                    > * {
+                        border: solid bs.$border-width transparent;
+                        box-shadow: inset 1px 1px rgba(255, 255, 255, 0.2), inset -1px -1px rgba(255, 255, 255, 0.1), 1px 3px 24px -1px rgba(0, 0, 0, 0.15);
+                        background-image: linear-gradient(125deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2) 70%);
+                        backdrop-filter: blur(5px);
+                        background-color: transparent !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Dark mode adjustments
+@include bs.color-mode(dark) {
+    .dropdown {
+        .dropdown-menu {
+            color: bs.color-contrast(colors.$gray-200);
+        }
+    }
+}

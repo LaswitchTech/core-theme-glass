@@ -1,0 +1,13 @@
+/* src/scss/forms/_floating.scss */
+@use "sass:map";
+@use "sass:math";
+@use "bootstrap/scss/bootstrap" as bs;
+
+.row {
+    > .form-floating {
+        > label {
+            padding-left: calc(calc(var(--bs-gutter-x) * .5) + bs.$form-floating-padding-x);
+            padding-right: calc(calc(var(--bs-gutter-x) * .5) + bs.$form-floating-padding-x);
+        }
+    }
+}
